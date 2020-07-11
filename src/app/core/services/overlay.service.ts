@@ -31,7 +31,7 @@ export class OverlayService {
   async toast(options?: ToastOptions): Promise<HTMLIonToastElement> {
     const toast = await this.toastCtrl.create({
       position: 'bottom',
-      duration: 3000,
+      duration: 8000,
       buttons: [
         { text: 'Ok', role: 'cancel', handler: () => console.log('dismissing toast...') }
       ],
