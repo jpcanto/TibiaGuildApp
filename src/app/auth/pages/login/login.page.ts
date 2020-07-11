@@ -11,6 +11,7 @@ import { OverlayService } from 'src/app/core/services/overlay.service';
 })
 export class LoginPage implements OnInit {
 
+  ferumbras: string ="assets/img/ferumbras.png"
   authForm: FormGroup;
   authProviders = AuthProvider;
   configs = {
@@ -18,6 +19,7 @@ export class LoginPage implements OnInit {
     action: 'Login',
     actionChange: 'Create account'
   };
+
   private nameControl = new FormControl('', [Validators.required, Validators.minLength(3)]);
 
   constructor(private authService: AuthService, private fb: FormBuilder, private overlayService: OverlayService) { }
