@@ -4,12 +4,12 @@
     <ion-icon name="people" color="primary" class="icon-7rem center"></ion-icon>
   </h1>
 
-  <form [formGroup]="authForm" (submit)="onSubmit()">
+  <form [formGroup]="authForm" (submit)="onSubmit(authProviders.Email)">
 
     <ng-container *ngIf="!configs.isSignIn">
 
       <ion-item class="ion-margin" color="dark">
-        <ion-icon name="person" color="primary" slot="start"></ion-icon>
+        <ion-icon name="person-outline" color="primary" slot="start"></ion-icon>
         <ion-input type="text" placeholder="Name" formControlName="name"></ion-input>
         <ion-note slot="end" color="danger" *ngIf="name.dirty && name.hasError('required')">Required</ion-note>
         <ion-note slot="end" color="danger" *ngIf="name.dirty && name.hasError('minlength')">Min 3 characters
@@ -39,7 +39,7 @@
   </form>
 
   <ion-button expand="block" fill="outline" (click)="changeAuthAction()">{{ configs.actionChange }}</ion-button>
-  <ion-button expand="block">
+  <ion-button expand="block" (click)="onSubmit(authProviders.Facebook)">
     <ion-icon name="logo-facebook" slot="start"></ion-icon>
     Login with facebook
   </ion-button>
