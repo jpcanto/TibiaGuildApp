@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyC8n3dnJ-6Yz3J7tr7LdZFyLQWgQZeqdi0",
+    authDomain: "tibiaguildapp.firebaseapp.com",
+    databaseURL: "https://tibiaguildapp.firebaseio.com",
+    projectId: "tibiaguildapp",
+    storageBucket: "tibiaguildapp.appspot.com",
+    messagingSenderId: "954428204744",
+    appId: "1:954428204744:web:df75eed6140519a2df67fd",
+    measurementId: "G-MDY9RBXB21"
+  }
 };
 
 /*
