@@ -4,7 +4,7 @@
     <ion-icon name="people" color="primary" class="icon-7rem center"></ion-icon>
   </h1>
 
-  <form [formGroup]="authForm" (submit)="onSubmit()" class="ion-margin">
+  <form [formGroup]="authForm" (submit)="onSubmit()">
 
     <ng-container *ngIf="!configs.isSignIn">
 
@@ -38,8 +38,8 @@
 
   </form>
 
-  <ion-button expand="block" fill="outline" class="ion-margin" (click)="changeAuthAction()">{{ configs.actionChange }}</ion-button>
-  <ion-button expand="block" class="ion-margin">
+  <ion-button expand="block" fill="outline" (click)="changeAuthAction()">{{ configs.actionChange }}</ion-button>
+  <ion-button expand="block">
     <ion-icon name="logo-facebook" slot="start"></ion-icon>
     Login with facebook
   </ion-button>
