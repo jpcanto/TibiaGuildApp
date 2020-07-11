@@ -8,7 +8,7 @@
 
     <ng-container *ngIf="!configs.isSignIn">
 
-      <ion-item class="ion-margin">
+      <ion-item class="ion-margin" color="dark">
         <ion-icon name="person" color="primary" slot="start"></ion-icon>
         <ion-input type="text" placeholder="Name" formControlName="name"></ion-input>
         <ion-note slot="end" color="danger" *ngIf="name.dirty && name.hasError('required')">Required</ion-note>
@@ -38,7 +38,7 @@
 
   </form>
 
-  <ion-button expand="block" fill="outline" (click)="changeAuthAction()">{{ configs.actionChange }}</ion-button>
+  <ion-button expand="block" fill="outline" class="ion-margin" (click)="changeAuthAction()">{{ configs.actionChange }}</ion-button>
   <ion-button expand="block" class="ion-margin">
     <ion-icon name="logo-facebook" slot="start"></ion-icon>
     Login with facebook
