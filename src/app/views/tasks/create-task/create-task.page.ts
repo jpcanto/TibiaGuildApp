@@ -56,7 +56,7 @@ export class CreateTaskPage implements OnInit {
 
   async onSubmit(): Promise<void> {
     const loading = await this.overlayService.loading({
-      message: 'Creating task...'
+      message: `${this.taskId ? 'Editing' : 'Creating'} task...`
     });
     try {
       !this.taskId
