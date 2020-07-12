@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TasksService } from 'src/app/services/tasks.service';
 import { NavController } from '@ionic/angular';
+import { OverlayService } from 'src/app/core/services/overlay.service';
 
 @Component({
   selector: 'app-create-task',
@@ -15,6 +16,7 @@ export class CreateTaskPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private navCtrl: NavController,
+    private overlayService: OverlayService,
     private tasksService: TasksService
   ) { }
 
@@ -30,11 +32,18 @@ export class CreateTaskPage implements OnInit {
   }
 
   async onSubmit(): Promise<void> {
+    const loading = await this.overlayService.loading({
+      message: 'Creating task...'
+    });
     try {
       const task = await this.tasksService.create(this.taskForm.value);
       this.navCtrl.navigateBack('/tasks');
     } catch (error) {
-      console.log(error)
+      await this.overlayService.toast({
+        message: error.message
+      })
+    } finally {
+      loading.dismiss();
     }
   }
 
