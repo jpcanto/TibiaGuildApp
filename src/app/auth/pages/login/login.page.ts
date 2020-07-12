@@ -3,6 +3,8 @@ import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms'
 import { AuthService } from 'src/app/core/services/auth.service';
 import { AuthProvider } from 'src/app/core/services/auth.types';
 import { OverlayService } from 'src/app/core/services/overlay.service';
+import { NavController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,7 @@ import { OverlayService } from 'src/app/core/services/overlay.service';
 })
 export class LoginPage implements OnInit {
 
-  ferumbras: string ="assets/img/ferumbras.png"
+  ferumbras: string = "assets/img/ferumbras.png"
   authForm: FormGroup;
   authProviders = AuthProvider;
   configs = {
@@ -22,7 +24,13 @@ export class LoginPage implements OnInit {
 
   private nameControl = new FormControl('', [Validators.required, Validators.minLength(3)]);
 
-  constructor(private authService: AuthService, private fb: FormBuilder, private overlayService: OverlayService) { }
+  constructor(
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private navCtrl: NavController,
+    private route: ActivatedRoute,
+    private overlayService: OverlayService
+  ) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -63,8 +71,8 @@ export class LoginPage implements OnInit {
         user: this.authForm.value,
         provider
       });
-      console.log('Authenticated: ', credentials);
-      console.log('Redirecting...');
+      // that's verify if our route has a query param to redirect the page to an especific route, if not, redirect to tasks for default.
+      this.navCtrl.navigateForward(this.route.snapshot.queryParamMap.get('redirect') || '/tasks')
     } catch (error) {
       await this.overlayService.toast({
         message: error.message
