@@ -38,6 +38,6 @@ export abstract class Firestore<T extends { id: string }> {
 
     delete(item: T): Promise<void> {
         return this.collection.doc<T>(item.id).delete();
-    };
+    }
 
 }
