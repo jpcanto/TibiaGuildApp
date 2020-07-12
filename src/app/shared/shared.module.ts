@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
-// Shared module is an export modules with common to all app modules.
+
 
 @NgModule({
   declarations: [],
   exports: [
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
