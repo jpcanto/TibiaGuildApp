@@ -27,6 +27,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   private checkAuthState(redirect: string): Observable<boolean> {
     return this.authService.isAuthenticated.pipe(
       tap(isAuthenticated => {
+        // if the user is not authenticated, throw him back to the login screen, adding a query param so that after login, he is redirected back to where he was.
         if (!isAuthenticated) {
           this.router.navigate(['/login'], {
             queryParams: { redirect }
