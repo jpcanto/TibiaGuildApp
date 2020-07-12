@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Task } from 'src/app/components/tasks/models/task.model';
 import { TasksService } from 'src/app/services/tasks.service';
 import { NavController } from '@ionic/angular';
 import { OverlayService } from 'src/app/core/services/overlay.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tasks-list',
@@ -22,8 +23,10 @@ export class TasksListPage {
     private tasksService: TasksService
   ) { }
 
-  ionViewDidEnter(): void {
+  async ionViewDidEnter(): Promise<void> {
+    const loading = await this.overlayService.loading();
     this.tasks$ = this.tasksService.getAll();
+    this.tasks$.pipe(take(1)).subscribe(tasks => loading.dismiss());
   }
 
   onUpdate(task: Task): void {
@@ -52,7 +55,7 @@ export class TasksListPage {
     const taskToUpdate = { ...task, done: !task.done };
     await this.tasksService.update(taskToUpdate);
     await this.overlayService.toast({
-      message: `Task "${task.title}" ${taskToUpdate.done ? 'in progress...' : 'Stopped'}`;
+      message: `Task "${task.title}" ${taskToUpdate.done ? 'in progress...' : 'Stopped'}`
     })
   }
 
