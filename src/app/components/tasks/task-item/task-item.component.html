@@ -1,0 +1,25 @@
+<!-- #sliding is an scopped variable -->
+<!-- When ionChange is called, the event is propagated to his father (ion-item) with has an event emitter too.
+   in that case we used $event.stopPropagation, for only done emitter is dispatched -->
+
+<ion-item-sliding #sliding>
+
+  <!-- <ion-item (click)="update.emit(task)">  enable this code if want dispatch event on element click -->
+  <ion-item>
+    {{ task.title }}
+    <ion-toggle slot="end" color="primary" [checked]="task.done" (ionChange)="done.emit(task)" (click)="$event.stopPropagation()"></ion-toggle>
+  </ion-item>
+
+  <ion-item-options side="start">
+
+    <ion-item-option color="danger" (click)="delete.emit(task); sliding.close()">
+      <ion-icon slot="icon-only" name="trash"></ion-icon>
+    </ion-item-option>
+
+    <ion-item-option color="primary" (click)="update.emit(task); sliding.close()">
+      <ion-icon slot="icon-only" name="create"></ion-icon>
+    </ion-item-option>
+
+  </ion-item-options>
+
+</ion-item-sliding>
