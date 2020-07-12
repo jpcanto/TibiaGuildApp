@@ -4,7 +4,8 @@
 
 <ion-item-sliding #sliding>
 
-  <ion-item (click)="update.emit(task)">
+  <!-- <ion-item (click)="update.emit(task)">  enable this code if want dispatch event on element click -->
+  <ion-item>
     {{ task.title }}
     <ion-toggle slot="end" color="primary" [checked]="task.done" (ionChange)="done.emit(task)" (click)="$event.stopPropagation()"></ion-toggle>
   </ion-item>

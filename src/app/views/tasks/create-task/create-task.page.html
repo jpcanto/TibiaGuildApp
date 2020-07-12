@@ -6,7 +6,7 @@
       <ion-back-button defaultHref="/tasks"></ion-back-button>
     </ion-buttons>
 
-    <ion-title>Create new Task</ion-title>
+    <ion-title>{{ pageMode + ' Task' }}</ion-title>
   </ion-toolbar>
 
 </ion-header>
@@ -15,6 +15,7 @@
   <form [formGroup]="taskForm" (submit)="onSubmit()">
     <ion-item>
       <ion-icon name="clipboard-outline" slot="start" color="primary"></ion-icon>
+
       <ion-input
         type="text"
         placeholder="Title"
@@ -23,9 +24,12 @@
         formControlName="title"
       >
       </ion-input>
+
+      <ion-toggle *ngIf="taskId" slot="end" color="primary" formControlName="done"></ion-toggle>
+
     </ion-item>
     <ion-button expand="block" type="submit" [disabled]="taskForm.invalid">
-      Create
+      {{ pageMode }}
     </ion-button>
   </form>
 </ion-content>
