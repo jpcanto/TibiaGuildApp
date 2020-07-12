@@ -34,3 +34,10 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+ion-header {
+    margin-bottom: 2vh;
+    ion-toolbar {
+        padding: .5vh 0 !important;
+    }
+}
