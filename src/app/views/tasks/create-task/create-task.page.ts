@@ -59,7 +59,13 @@ export class CreateTaskPage implements OnInit {
       message: 'Creating task...'
     });
     try {
-      const task = await this.tasksService.create(this.taskForm.value);
+      !this.taskId
+        ? await this.tasksService.create(this.taskForm.value)
+        : await this.tasksService.update({
+          id: this.taskId,
+          ...this.taskForm.value
+        });
+
       this.navCtrl.navigateBack('/tasks');
     } catch (error) {
       await this.overlayService.toast({
