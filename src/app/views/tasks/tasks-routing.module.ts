@@ -12,11 +12,15 @@ const routes: Routes = [
     canActivateChild: [AuthGuard],
     children: [
       {
+        path: 'create',
+        loadChildren: () => import('./create-task/create-task.module').then( m => m.CreateTaskPageModule)
+      },
+      {
         path: '',
         loadChildren: () => import('./tasks-list/tasks-list.module').then(m => m.TasksListPageModule)
       }
     ]
-  }
+  },
 ];
 
 @NgModule({
