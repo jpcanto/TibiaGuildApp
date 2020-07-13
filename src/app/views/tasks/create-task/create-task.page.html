@@ -13,6 +13,7 @@
 
 <ion-content padding>
   <form [formGroup]="taskForm" (submit)="onSubmit()">
+
     <ion-item class="ion-margin">
       <ion-icon name="clipboard-outline" slot="start" color="primary"></ion-icon>
 
@@ -28,6 +29,20 @@
       <ion-toggle *ngIf="taskId" slot="end" color="primary" formControlName="done"></ion-toggle>
 
     </ion-item>
+
+    <ion-item class="ion-margin">
+      <ion-icon name="clipboard-outline" slot="start" color="primary"></ion-icon>
+
+      <ion-input
+        type="text"
+        placeholder="Type"
+        inputmode="text"
+        formControlName="type"
+      >
+      </ion-input>
+
+    </ion-item>
+
     <ion-button expand="block" type="submit" [disabled]="taskForm.invalid">
       {{ pageMode }}
     </ion-button>
