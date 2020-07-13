@@ -34,7 +34,7 @@ export class TasksListPage {
   }
 
   onAssign(task: Task): void {
-    this.navCtrl.navigateForward(`/tasks/assign/${task.id}`)
+    this.navCtrl.navigateForward(`/tasks/edit/${task.id}`)
   }
 
   async onDelete(task: Task): Promise<void> {
