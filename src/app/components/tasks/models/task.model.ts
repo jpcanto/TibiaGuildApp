@@ -3,4 +3,6 @@ export interface Task {
     title: string;
     done: boolean;
     type: string;
+    blocker: boolean;
+    healer: boolean;
 }

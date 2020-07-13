@@ -31,7 +31,7 @@
     </ion-item>
 
     <ion-item class="ion-margin">
-      <ion-icon name="clipboard-outline" slot="start" color="primary"></ion-icon>
+      <ion-icon name="apps" slot="start" color="primary"></ion-icon>
 
       <ion-input
         type="text"
@@ -41,6 +41,18 @@
       >
       </ion-input>
 
+    </ion-item>
+
+    <ion-item class="ion-margin">
+      <ion-icon name="body-outline" slot="start" color="primary"></ion-icon>
+      <ion-label>Blocker necessary?</ion-label>
+      <ion-toggle slot="end" color="primary" formControlName="blocker"></ion-toggle>
+    </ion-item>
+
+    <ion-item class="ion-margin">
+      <ion-icon name="heart-outline" slot="start" color="primary"></ion-icon>
+      <ion-label>Healer necessary?</ion-label>
+      <ion-toggle slot="end" color="primary" formControlName="healer"></ion-toggle>
     </ion-item>
 
     <ion-button expand="block" type="submit" [disabled]="taskForm.invalid">
