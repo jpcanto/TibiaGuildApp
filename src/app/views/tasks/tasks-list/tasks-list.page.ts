@@ -33,6 +33,10 @@ export class TasksListPage {
     this.navCtrl.navigateForward(`/tasks/edit/${task.id}`)
   }
 
+  onAssign(task: Task): void {
+    this.navCtrl.navigateForward(`/tasks/assign/${task.id}`)
+  }
+
   async onDelete(task: Task): Promise<void> {
     await this.overlayService.alert({
       message: `Do you really want to delete the task "${task.title}"?`,
