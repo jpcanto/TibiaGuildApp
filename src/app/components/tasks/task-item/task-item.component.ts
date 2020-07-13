@@ -11,7 +11,7 @@ export class TaskItemComponent {
   @Input() task: Task;
 
   @Output() done = new EventEmitter<Task>();
-  @Output() view = new EventEmitter<Task>();
+  @Output() assign = new EventEmitter<Task>();
   @Output() update = new EventEmitter<Task>();
   @Output() delete = new EventEmitter<Task>();
 
