@@ -69,7 +69,6 @@ export class CreateTaskPage implements OnInit {
       message: `${this.taskId ? 'Editing' : 'Creating'} task...`
     });
     try {
-      console.log(this.taskForm.value);
       !this.taskId
         ? await this.tasksService.create(this.taskForm.value)
         : await this.tasksService.update({

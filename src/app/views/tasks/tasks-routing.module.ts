@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('./create-task/create-task.module').then( m => m.CreateTaskPageModule)
       },
       {
+        path: 'assign/:id',
+        loadChildren: () => import('./task-assign/task-assign.module').then( m => m.TaskAssignPageModule)
+      },
+      {
         path: '',
         loadChildren: () => import('./tasks-list/tasks-list.module').then(m => m.TasksListPageModule)
       }
