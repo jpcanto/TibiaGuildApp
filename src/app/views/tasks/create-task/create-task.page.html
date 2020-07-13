@@ -43,16 +43,32 @@
 
     </ion-item>
 
-    <ion-item class="ion-margin">
+    <ion-item *ngIf="!taskId" class="ion-margin">
+      <ion-icon name="person-outline" slot="start" color="primary"></ion-icon>
+      <ion-select placeholder="Choose your vocation" formControlName="vocation">
+        <ion-select-option value="EK">Elite knight</ion-select-option>
+        <ion-select-option value="ED">Elder druid</ion-select-option>
+        <ion-select-option value="MS">Master sorcerer</ion-select-option>
+        <ion-select-option value="RP">Royal paladin</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="!taskId" class="ion-margin">
       <ion-icon name="body-outline" slot="start" color="primary"></ion-icon>
       <ion-label>Blocker necessary?</ion-label>
       <ion-toggle slot="end" color="primary" formControlName="blocker"></ion-toggle>
     </ion-item>
 
-    <ion-item class="ion-margin">
+    <ion-item *ngIf="!taskId" class="ion-margin">
       <ion-icon name="heart-outline" slot="start" color="primary"></ion-icon>
       <ion-label>Healer necessary?</ion-label>
       <ion-toggle slot="end" color="primary" formControlName="healer"></ion-toggle>
+    </ion-item>
+
+    <ion-item *ngIf="!taskId" class="ion-margin">
+      <ion-icon name="bonfire-outline" slot="start" color="primary"></ion-icon>
+      <ion-label>Shotter necessary?</ion-label>
+      <ion-toggle slot="end" color="primary" formControlName="dps"></ion-toggle>
     </ion-item>
 
     <ion-button expand="block" type="submit" [disabled]="taskForm.invalid">
