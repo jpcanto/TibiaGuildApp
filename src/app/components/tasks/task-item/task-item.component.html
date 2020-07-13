@@ -20,6 +20,10 @@
       <ion-icon slot="icon-only" name="create"></ion-icon>
     </ion-item-option>
 
+    <ion-item-option color="secondary" (click)="view.emit(task); sliding.close()">
+      <ion-icon slot="icon-only" name="eye"></ion-icon>
+    </ion-item-option>
+
   </ion-item-options>
 
 </ion-item-sliding>
