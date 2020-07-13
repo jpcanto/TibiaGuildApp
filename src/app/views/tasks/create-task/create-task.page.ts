@@ -41,12 +41,14 @@ export class CreateTaskPage implements OnInit {
     this.tasksService
       .get(taskId)
       .pipe(take(1))
-      .subscribe(({ title, done, type, blocker, healer }) => {
+      .subscribe(({ title, done, type, vocation, blocker, healer, dps }) => {
         this.taskForm.get('title').setValue(title);
         this.taskForm.get('done').setValue(done);
         this.taskForm.get('type').setValue(type);
+        this.taskForm.get('vocation').setValue(vocation);
         this.taskForm.get('blocker').setValue(blocker);
         this.taskForm.get('healer').setValue(healer);
+        this.taskForm.get('dps').setValue(dps);
       })
   }
 
@@ -55,8 +57,10 @@ export class CreateTaskPage implements OnInit {
       title: ['', [Validators.required, Validators.minLength(2)]],
       done: [false],
       type: ['', [Validators.required, Validators.minLength(4)]],
+      vocation: ['', [Validators.required]],
       blocker: [false],
       healer: [false],
+      dps: [false],
     })
   }
 
@@ -65,6 +69,7 @@ export class CreateTaskPage implements OnInit {
       message: `${this.taskId ? 'Editing' : 'Creating'} task...`
     });
     try {
+      console.log(this.taskForm.value);
       !this.taskId
         ? await this.tasksService.create(this.taskForm.value)
         : await this.tasksService.update({
